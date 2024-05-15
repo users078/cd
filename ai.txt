@@ -368,3 +368,62 @@ if __name__ == "__main__":
 
     m = 3
     graph_coloring(graph, m)
+
+
+A Star Algorithm
+
+
+#include <stdio.h>  
+#include <stdlib.h>  
+  
+#define ROWS 5  
+#define COLS 5  
+  
+// Define a structure for a grid cell  
+typedef struct {  
+    int row, col;  
+} Cell;  
+  
+// Define a structure for a node in the A* algorithm  
+typedef struct {  
+    Cell position;  
+    int g, h, f;  
+    struct Node* parent;  
+} Node;  
+  
+// Function to calculate the Manhattan distance between two cells  
+int heuristic(Cell current, Cell goal) {  
+    return abs(current.row - goal.row) + abs(current.col - goal.col);  
+}  
+  
+// Function to check if a cell is valid (within the grid and not an obstacle)  
+int isValid(int row, int col, int grid[ROWS][COLS]) {  
+    return (row >= 0) && (row < ROWS) && (col >= 0) && (col < COLS) && (grid[row][col] == 0);  
+}  
+  
+// Function to check if a cell is the goal cell  
+int isGoal(Cell cell, Cell goal) {  
+    return (cell.row == goal.row) && (cell.col == goal.col);  
+}  
+  
+// Function to perform the A* search algorithm  
+void AStarSearch(int grid[ROWS][COLS], Cell start, Cell goal) {  
+    // TODO: Implement the A* search algorithm here  
+}  
+  
+int main() {  
+    int grid[ROWS][COLS] = {  
+        {0, 1, 0, 0, 0},  
+        {0, 1, 0, 1, 0},  
+        {0, 0, 0, 1, 0},  
+        {0, 1, 0, 0, 0},  
+        {0, 0, 0, 0, 0}  
+    };  
+      
+    Cell start = {0, 0};  
+    Cell goal = {ROWS - 1, COLS - 1};  
+      
+    AStarSearch (grid, start, goal);  
+  
+    return 0;  
+}  
